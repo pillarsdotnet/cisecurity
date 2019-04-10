@@ -374,12 +374,13 @@ class cisecurity::redhat7::filesystem (
         mode   => '0700',
       }
     }
-    file { '/etc/ssh/sshd_config':
-      ensure => file,
-      mode   => '0600',
-      owner  => 'root',
-      group  => 'root',
-    }
+    # Conflicts with ssh module.
+    # file { '/etc/ssh/sshd_config':
+    #   ensure => file,
+    #   mode   => '0600',
+    #   owner  => 'root',
+    #   group  => 'root',
+    # }
   }
 
   if $remediate_log_file_perms == 'enabled' {
