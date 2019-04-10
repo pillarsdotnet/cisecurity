@@ -4,8 +4,8 @@
 
 class cisecurity::redhat7::packages (
   Enum['installed','uninstalled','ignored'] $aide,
-  String $aide_cron_start_hour,
-  String $aide_cron_start_minute,
+  Variant[Integer,String] $aide_cron_start_hour,
+  Variant[Integer,String] $aide_cron_start_minute,
   Enum['installed','uninstalled','ignored'] $firewalld,
   Enum['installed','uninstalled','ignored'] $libselinux,
   Enum['installed','uninstalled','ignored'] $logrotate,
@@ -40,7 +40,7 @@ class cisecurity::redhat7::packages (
       hour   => $aide_cron_start_hour,
       minute => $aide_cron_start_minute,
     }
-  } else {
+  } elsif $aide == 'uninstalled' {
     package { 'aide':
       ensure => purged,
     }
