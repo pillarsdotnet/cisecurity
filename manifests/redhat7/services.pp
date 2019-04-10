@@ -98,7 +98,7 @@ class cisecurity::redhat7::services (
     'VERBOSE'] $sshd_log_level,
   Variant[Integer,String] $sshd_max_auth_tries,
   Variant[Boolean,Enum['yes','no']] $sshd_permit_empty_passwords,
-  Variant[Boolean,Enum['yes','no']] $sshd_permit_root_login,
+  Variant[Boolean,Enum['yes','no', 'prohibit-password', 'forced-commands-only']] $sshd_permit_root_login,
   Array[String] $sshd_permitted_ciphers,
   Array[String] $sshd_permitted_macs,
   Variant[Boolean,Enum['yes','no']] $sshd_permit_user_environment,
